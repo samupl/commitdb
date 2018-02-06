@@ -1,0 +1,12 @@
+[database]
+name = commitdb
+user = commitdb
+password = commitdb
+host = localhost
+
+[security]
+secret = 123
+access_pw = 123
+
+[debug]
+debug = false

@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ commit.git_hash }}{% endblock %}
+
+{% block content %}
+    <section class="jumbotron text-center">
+        <h1 class="jumbotron-heading">
+            <i class="fa fa-fw fa-quote-left text-muted big-icon"></i>
+            {{ commit.text }}
+        </h1>
+        <p class="lead text-muted">Hash: {{ commit.git_hash }}</p>
+        <div class="vote-box">
+            <a class="text-success" href="{% url 'funny' commit.git_hash %}">
+                <i class="fa fa-fw fa-thumbs-up"></i> Funny
+            </a>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <a class="text-danger" href="{% url 'not_funny' commit.git_hash %}">
+                <i class="fa fa-fw fa-thumbs-down"></i> Not funny
+            </a>
+        </div>
+    </section>
+{% endblock %}

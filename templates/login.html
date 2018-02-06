@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Sign in{% endblock %}
+
+{% block content %}
+    <div class="jumbotron text-center">
+        <h1 class="jumbotron-heading">
+            <i class="fa fa-fw fa-lock text-muted big-icon"></i>
+            Restricted area
+        </h1>
+        <p class="lead text-muted">Please type the password to view this site content</p>
+        <form class="col-md-4 offset-md-4" method="POST">
+            {% csrf_token %}
+            <input type="password" id="id_password" name="password" class="form-control">
+        </form>
+    </div>
+{% endblock %}

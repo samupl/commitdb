@@ -16,6 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+import apps.commits.views
+
+
 urlpatterns = [
+    path('', apps.commits.views.index, name='index'),
+    path(
+        'funny/<str:git_hash>',
+        apps.commits.views.vote_funny,
+        name='funny'
+    ),
+    path(
+        'not_funny/<str:git_hash>',
+        apps.commits.views.vote_not_funny,
+        name='not_funny'
+    ),
+    path('login', apps.commits.views.login, name='login'),
     path('admin/', admin.site.urls),
 ]
