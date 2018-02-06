@@ -40,7 +40,9 @@ def index(request: HttpRequest) -> HttpResponse:
         request,
         'index.html',
         {
-            'commit': random_commit
+            'commit': random_commit,
+            'top10': Commit.top_10(),
+            'bottom10': Commit.bottom_10(),
         },
     )
 
@@ -57,6 +59,8 @@ def browse(request: HttpRequest, git_hash: str) -> HttpResponse:
         {
             'commit': commit,
             'browse': True,
+            'top10': Commit.top_10(),
+            'bottom10': Commit.bottom_10(),
         },
     )
 

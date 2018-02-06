@@ -4,7 +4,7 @@
 
 {% block content %}
     <section class="jumbotron text-center">
-        <h1 class="jumbotron-heading">
+        <h1 class="jumbotron-heading quote">
             <i class="fa fa-fw fa-quote-left text-muted big-icon"></i>
             {{ commit.text }}
         </h1>
@@ -27,6 +27,37 @@
             <a class="text-danger" href="{% url 'not_funny' commit.git_hash %}">
                 <i class="fa fa-fw fa-thumbs-down"></i> Not funny
             </a>
+        </div>
+    </section>
+
+    <section class="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Top 10</h2>
+
+                    <table class="simple">
+                        {% for commit in top10 %}
+                            <tr>
+                                <td><a href="{% url 'browse' commit.git_hash %}">{{ commit.short_hash }}</a></td>
+                                <td><span class="quote text-muted">{{ commit.text }}</span></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <h2>Bottom 10</h2>
+
+                    <table class="simple">
+                        {% for commit in bottom10 %}
+                            <tr>
+                                <td><a href="{% url 'browse' commit.git_hash %}">{{ commit.short_hash }}</a></td>
+                                <td><span class="quote text-muted">{{ commit.text }}</span></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
         </div>
     </section>
 {% endblock %}
