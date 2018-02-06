@@ -8,7 +8,15 @@
             <i class="fa fa-fw fa-quote-left text-muted big-icon"></i>
             {{ commit.text }}
         </h1>
-        <p class="lead text-muted">Hash: {{ commit.git_hash }}</p>
+        <p class="lead text-muted">
+            Hash: {{ commit.git_hash }} <a href="{% url 'browse' commit.git_hash %}"><i class="fa fa-fw fa-link"></i></a>
+        </p>
+        {% if browse %}
+            <p class="text-muted">
+                You are browsing a single commit<br>
+                <a href="/"><i class="fa fa-fw fa-random"></i> Show random</a>
+            </p>
+        {% endif %}
         <div class="vote-box">
             <a class="text-success" href="{% url 'funny' commit.git_hash %}">
                 <i class="fa fa-fw fa-thumbs-up"></i> Funny

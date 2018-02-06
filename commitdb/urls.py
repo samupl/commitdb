@@ -22,6 +22,11 @@ import apps.commits.views
 urlpatterns = [
     path('', apps.commits.views.index, name='index'),
     path(
+        'browse/<str:git_hash>',
+        apps.commits.views.browse,
+        name='browse'
+    ),
+    path(
         'funny/<str:git_hash>',
         apps.commits.views.vote_funny,
         name='funny'

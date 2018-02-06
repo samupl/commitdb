@@ -4,7 +4,7 @@ from random import randint
 
 from django.db.models import Count, F
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from apps.commits.models import Commit
 from commitdb import settings
@@ -41,6 +41,22 @@ def index(request: HttpRequest) -> HttpResponse:
         'index.html',
         {
             'commit': random_commit
+        },
+    )
+
+
+@login_required
+def browse(request: HttpRequest, git_hash: str) -> HttpResponse:
+    commit = get_object_or_404(
+        Commit,
+        git_hash=git_hash
+    )
+    return render(
+        request,
+        'index.html',
+        {
+            'commit': commit,
+            'browse': True,
         },
     )
 
