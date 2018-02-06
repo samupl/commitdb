@@ -27,7 +27,14 @@
             <a class="text-danger" href="{% url 'not_funny' commit.git_hash %}">
                 <i class="fa fa-fw fa-thumbs-down"></i> Not funny
             </a>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <a href="{% url 'all' %}" class="text-muted">
+                <i class="fa fa-fw fa-th-list"></i> Browse
+            </a>
         </div>
+
     </section>
 
     <section class="top">

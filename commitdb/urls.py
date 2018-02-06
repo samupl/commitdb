@@ -37,5 +37,6 @@ urlpatterns = [
         name='not_funny'
     ),
     path('login', apps.commits.views.login, name='login'),
+    path('all', apps.commits.views.show_all, name='all'),
     path('admin/', admin.site.urls),
 ]

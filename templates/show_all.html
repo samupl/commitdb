@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+
+
+{% block title %}Show all{% endblock %}
+
+{% block content %}
+    <section class="jumbotron">
+        <div class="container">
+            <h3>Browse all commits</h3>
+            <p>
+                <a href="/">
+                    <i class="fa fa-fw fa-reply"></i> Back to random quotes
+                </a>
+            </p>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row">
+            <table class="table DataTable">
+                <thead>
+                    <tr>
+                        <th>Commit hash</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for commit in commits %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'browse' commit.git_hash %}">{{ commit.git_hash }}</a>
+                            </td>
+                            <td>{{ commit.text }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

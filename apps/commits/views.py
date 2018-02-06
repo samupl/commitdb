@@ -87,3 +87,9 @@ def calculate_total_score(git_hash: str):
 def make_vote(git_hash: str, score: str):
     Commit.objects.filter(git_hash=git_hash).update(**{score: F(score) + 1})
     calculate_total_score(git_hash)
+
+
+def show_all(request: HttpRequest) -> HttpResponse:
+    return render(request, 'show_all.html', {
+        'commits': Commit.objects.all()[0:1000]
+    })
